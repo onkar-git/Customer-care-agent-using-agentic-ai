@@ -111,7 +111,7 @@ open up localhost:
 
 	sudo sh get-docker.sh
 
-	sudo usermod -aG docker ubuntu
+	sudo usermod -aG docker ubun
 
 	newgrp docker
 	
