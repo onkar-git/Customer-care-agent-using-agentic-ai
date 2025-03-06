@@ -68,7 +68,7 @@ Relevant Information:
 Jio Pay Assistant:
 """
 
-
+#setup the promts
 PROMPT = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
 
 qa_chain = RetrievalQA.from_chain_type(
