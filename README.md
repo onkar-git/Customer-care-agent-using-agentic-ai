@@ -57,7 +57,7 @@ open up localhost:
 	2. ECR: Elastic Container registry to save your docker image in aws
 
 
-	#Description: About the deployment
+	#Description: About the deployment of application
 
 	1. Build docker image of the source code
 
