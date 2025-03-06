@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jio Pay Customer Support</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .chat-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .chat-header {
+            background: #0d6efd;
+            color: #ffffff;
+            padding: 15px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .chat-box {
+            height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .message {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .message.user .text {
+            background: #0d6efd;
+            color: #ffffff;
+            margin-left: auto;
+            border-top-right-radius: 0;
+        }
+        .message.bot .text {
+            background: #e9ecef;
+            color: #212529;
+            margin-right: auto;
+            border-top-left-radius: 0;
+        }
+        .text {
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 75%;
+        }
+        .chat-input {
+            display: flex;
+            padding: 15px;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 20px;
+            outline: none;
+        }
+        .chat-input button {
+            background: #0d6efd;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .chat-input button:hover {
+            background: #0b5ed7;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">Jio Pay Customer Support</div>
+    <div class="chat-box" id="chat-box"></div>
+    <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Type your question..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    function appendMessage(text, sender) {
+        const chatBox = document.getElementById('chat-box');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}`;
+        const textDiv = document.createElement('div');
+        textDiv.className = 'text';
+        textDiv.innerText = text;
+        messageDiv.appendChild(textDiv);
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function sendMessage() {
+        const userInput = document.getElementById('user-input');
+        const message = userInput.value.trim();
+        if (message === '') return;
+
+        // Append user message
+        appendMessage(message, 'user');
+
+        // Send message to Flask backend
+        fetch('/get', {
+            method: 'POST',
+            body: new URLSearchParams({ msg: message }),
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+        .then(response => response.text())
+        .then(data => {
+            appendMessage(data, 'bot');
+        });
+
+        userInput.value = '';
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    }
+</script>
+
+</body>
+</html>
