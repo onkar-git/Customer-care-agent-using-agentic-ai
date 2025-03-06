@@ -182,7 +182,7 @@ def chat():
         citations_text = "\n\nSources: " + ", ".join(set(citations))
         return answer + citations_text
 
-    return answer  # No sources for non-retrieved answers
+    return answer  # No sources for non-retrieved answers that means iy can be generilised
 
 
 
