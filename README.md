@@ -91,7 +91,7 @@ open up localhost:
 
 	
 ## 3. Create ECR repo to store/save docker image
-    - Save the URI: 650251684767.dkr.ecr.us-east-1.amazonaws.com/customercare
+    - URI: 650251684767.dkr.ecr.us-east-1.amazonaws.com/customercare
 
 	
 ## 4. Create EC2 machine (Ubuntu) 
