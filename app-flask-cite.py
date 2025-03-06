@@ -22,7 +22,7 @@ def get_documents():
 
     
     for doc in documents:
-        doc.metadata["source"] = doc.metadata.get("name", "//pdf-data//jiopayFAQ.pdf")
+        doc.metadata["source"] = doc.metadata.get("name", "//pdf-data//jiopayFAQ.pdf") # source
 
     
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=500)
