@@ -25,20 +25,6 @@ conda activate jiobot
 pip install -r requirements-deploy.txt
 ```
 
-
-<!-- ### Create a `.env` file in the root directory and add your Pinecone & openai credentials as follows:
-
-```ini
-PINECONE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-OPENAI_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-``` -->
-
-<!-- 
-```bash
-# run the following command to store embeddings to pinecone
-python store_index.py
-``` -->
-
 ```bash
 # Finally run the following command
 python app-flask.cite.py
@@ -96,7 +82,7 @@ open up localhost:
 	
 ## 4. Create EC2 machine (Ubuntu) 
 
-## 5. Open EC2 and Install docker in EC2 Machine:
+## 5. Open EC2 and Install docker in EC2 Machine: AWSCLIv2 is also needed
 	
 	
 	#optinal
