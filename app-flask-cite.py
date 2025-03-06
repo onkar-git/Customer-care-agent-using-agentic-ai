@@ -174,7 +174,7 @@ def chat():
     response = qa_chain({"query": msg})
 
     answer = response.get("result", "I'm sorry, but I couldn't find an answer. Please visit the Jio Pay help center.")
-    sources = response.get("source_documents", [])
+    sources = response.get("source_documents", []) # source citations are attached
 
     # Attach sources only if there are retrieved documents
     if sources:
