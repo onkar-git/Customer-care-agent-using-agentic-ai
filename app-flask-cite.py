@@ -17,7 +17,7 @@ bedrock = boto3.client(service_name="bedrock-runtime", region_name="us-east-1")
 bedrock_embeddings = BedrockEmbeddings(model_id="amazon.titan-embed-text-v2:0", client=bedrock)
 
 def get_documents():
-    loader = PyPDFDirectoryLoader("pdf-data")  # Ensure PDF files are in 'pdf-data' folder
+    loader = PyPDFDirectoryLoader("pdf-data")  # all files in pdf -data input source
     documents = loader.load()
 
     
